@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Readiness Assessment — Small Business Legal Aid™</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f1117;font-family:Georgia,serif;color:#e8e8f0;min-height:100vh}
+a{color:#c8a45a}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#0a0c12 0%,#1a1520 50%,#0a0c12 100%);border-bottom:1px solid #2a2d3a;padding:18px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.hdr-name{font-size:18px;font-weight:700;color:#c8a45a;letter-spacing:.4px}
+.hdr-sub{font-size:10px;color:#8888a0;letter-spacing:1.4px;text-transform:uppercase;margin-top:2px}
+.hdr-meta{font-size:11px;color:#8888a0;text-align:right;line-height:1.6}
+.hdr-risk{font-weight:700;margin-top:2px}
+
+/* CONTAINER */
+.wrap{max-width:740px;margin:0 auto;padding:28px 16px 60px}
+
+/* CARD */
+.card{background:#1a1d27;border:1px solid #2a2d3a;border-radius:12px}
+
+/* BUTTONS */
+.btn-gold{background:linear-gradient(135deg,#c8a45a,#e8c97a);color:#0a0c12;border:none;border-radius:8px;padding:13px 32px;font-size:15px;font-weight:700;cursor:pointer;font-family:Georgia,serif;width:100%;transition:opacity .15s}
+.btn-gold:hover{opacity:.9}
+.btn-ghost{flex:1;background:transparent;border:1px solid #2a2d3a;border-radius:8px;padding:11px;color:#8888a0;font-size:14px;cursor:pointer;font-family:Georgia,serif;transition:background .15s}
+.btn-ghost:hover{background:#1a1d27}
+
+/* INTRO */
+.intro-body{padding:44px 36px;text-align:center}
+.intro-icon{font-size:48px;margin-bottom:18px}
+.intro-title{font-size:26px;font-weight:700;margin-bottom:10px;line-height:1.3}
+.intro-sub{font-size:13px;color:#8888a0;font-style:italic;margin-bottom:20px}
+.intro-inst{font-size:14px;color:#8888a0;margin-bottom:32px;line-height:1.7}
+.intro-note{margin-top:18px;font-size:12px;color:#8888a0;font-style:italic}
+
+/* QUALIFIER */
+.qual-body{padding:36px}
+.qual-step{font-size:11px;color:#c8a45a;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.qual-q{font-size:20px;font-weight:700;margin-bottom:24px;line-height:1.4}
+.qual-opts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.qual-opt{background:#12151e;border:2px solid #2a2d3a;border-radius:10px;padding:22px 16px;cursor:pointer;text-align:center;transition:border-color .15s,background .15s}
+.qual-opt:hover{border-color:#c8a45a;background:#1a1d27}
+.qual-opt-icon{font-size:26px;margin-bottom:8px}
+.qual-opt-label{font-size:15px;font-weight:700;margin-bottom:4px}
+.qual-opt-desc{font-size:12px;color:#8888a0}
+
+/* PROGRESS */
+.prog-wrap{margin-bottom:24px}
+.prog-top{display:flex;justify-content:space-between;font-size:12px;color:#8888a0;margin-bottom:7px}
+.prog-bar{height:6px;border-radius:3px;background:#2a2d3a;overflow:hidden;display:flex}
+.pb-g{background:#4caf7d;transition:width .3s}
+.pb-b{background:#6aabcc;transition:width .3s}
+.pb-r{background:#e05c5c;transition:width .3s}
+
+/* LEGEND */
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px;font-size:12px}
+.leg-item{display:flex;align-items:center;gap:5px;color:#8888a0}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* SECTION CARD */
+.sec-card{background:#1a1d27;border:1px solid #2a2d3a;border-radius:12px;margin-bottom:10px;overflow:hidden}
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;gap:10px;user-select:none}
+.sec-title{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px}
+.sec-right{display:flex;align-items:center;gap:8px}
+.sec-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.badge-grey{background:#1a1d27;color:#8888a0;border:1px solid #2a2d3a}
+.badge-green{background:#0f2d1e;color:#4caf7d}
+.badge-red{background:#2d1515;color:#e05c5c}
+.badge-blue{background:#0d1e2d;color:#6aabcc}
+.badge-amber{background:#2d1e00;color:#e0a030}
+.sec-toggle{color:#8888a0;font-size:18px;line-height:1}
+/* SECTION NUMBER ICONS */
+.sec-icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:700;font-family:Georgia,serif;flex-shrink:0;font-style:normal}
+.si-1{background:#1a2d3a;color:#6aabcc;border:1px solid #6aabcc55}
+.si-2{background:#2d2a1a;color:#c8a45a;border:1px solid #c8a45a55}
+.si-3{background:#1a2d1e;color:#4caf7d;border:1px solid #4caf7d55}
+.si-4{background:#2d1a2a;color:#cc8aaa;border:1px solid #cc8aaa55}
+.si-5{background:#2a1a2d;color:#9a8acc;border:1px solid #9a8acc55}
+.si-6{background:#2d2a1a;color:#e0a030;border:1px solid #e0a03055}
+
+.sec-body{padding:0 22px 22px}
+.risk-note{background:#1c1830;border:1px solid #3a3560;border-radius:7px;padding:11px 15px;font-size:12px;color:#aaa8cc;margin-bottom:18px;font-style:italic;line-height:1.6}
+
+/* ITEM */
+.item-row{padding:16px 0;border-bottom:1px solid #2a2d3a}
+.item-row:last-child{border-bottom:none}
+.item-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.rf-badge{font-size:9px;font-weight:700;padding:3px 7px;border-radius:3px;background:#2d1515;color:#e05c5c;border:1px solid #e05c5c;white-space:nowrap;flex-shrink:0;margin-top:3px;letter-spacing:.5px}
+.item-text{font-size:15px;line-height:1.6;flex:1;transition:color .15s;font-weight:400}
+.item-text.ans-yes{color:#a0d4b0}
+.item-text.ans-no{color:#d4a0a0}
+.item-text.ans-unsure{color:#a0c0d8}
+.btn-row{display:flex;gap:6px;flex-wrap:nowrap}
+.ans-btn{flex:1;padding:10px 0;border-radius:6px;font-size:13px;cursor:pointer;font-family:Georgia,serif;transition:all .15s;border:2px solid #2a2d3a;background:transparent;color:#8888a0}
+.ans-btn:hover{border-color:#555}
+.ans-btn.sel-yes{border-color:#4caf7d;background:#0f2d1e;color:#4caf7d;font-weight:700}
+.ans-btn.sel-no{border-color:#e05c5c;background:#2d1515;color:#e05c5c;font-weight:700}
+.ans-btn.sel-unsure{border-color:#6aabcc;background:#0d1e2d;color:#6aabcc;font-weight:700}
+
+/* VIEW RESULTS BTN */
+.view-results-row{display:flex;gap:10px;margin-top:22px}
+
+/* RESULTS */
+.results-card{background:#1a1d27;border:1px solid #2a2d3a;border-radius:12px;padding:28px;margin-bottom:14px}
+.disclaimer{border:1px solid #e05c5c55;border-radius:8px;padding:13px 16px;margin-bottom:20px;background:#2d151520}
+.disclaimer p{font-size:12px;color:#8888a0;font-style:italic;line-height:1.6}
+.score-row{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:18px}
+.score-big{font-size:42px;font-weight:700;color:#c8a45a;line-height:1}
+.score-sub{font-size:12px;color:#8888a0;margin-top:4px}
+.risk-badge-lg{padding:9px 20px;border-radius:8px;font-size:17px;font-weight:700}
+.breakdown{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;margin-bottom:20px}
+.bd-g{color:#4caf7d}
+.bd-b{color:#6aabcc}
+.bd-r{color:#e05c5c}
+.bd-m{color:#8888a0}
+.cta-box{background:#0a0c12;border:1px solid #c8a45a;border-radius:10px;padding:22px}
+.cta-text{font-size:14px;color:#e8e8f0;line-height:1.6;margin-bottom:14px}
+.cta-sub{font-size:11px;color:#8888a0;text-align:center;margin-top:9px}
+
+/* PRIORITY LISTS */
+.pri-list{border-radius:9px;padding:16px 20px;margin-bottom:12px}
+.pl-red{background:#2d1515;border:1px solid #e05c5c33}
+.pl-blue{background:#0d1e2d;border:1px solid #6aabcc33}
+.pl-amber{background:#2d1e00;border:1px solid #e0a03033}
+.pl-title{font-size:13px;font-weight:700;margin-bottom:10px}
+.pl-title-r{color:#e05c5c}
+.pl-title-b{color:#6aabcc}
+.pl-title-a{color:#e0a030}
+.pl-subnote{font-size:11px;color:#8888a0;font-style:italic;margin-bottom:8px;line-height:1.5}
+.pl-item{font-size:12px;color:#c8c8d8;padding:5px 0;border-bottom:1px solid #ffffff0d;line-height:1.4}
+.pl-item:last-child{border-bottom:none}
+
+/* FOOTER CONTACT */
+.contact-footer{margin-top:26px;padding:16px 20px;background:#1a1d27;border:1px solid #2a2d3a;border-radius:10px;font-size:11px;color:#8888a0;line-height:1.8}
+.contact-footer strong{color:#e8e8f0}
+
+/* HIDDEN */
+.hidden{display:none}
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 600px) {
+  .hdr{padding:14px 16px}
+  .hdr-name{font-size:15px}
+  .wrap{padding:20px 12px 48px}
+  .intro-body{padding:32px 20px}
+  .intro-title{font-size:21px}
+  .intro-inst{font-size:13px}
+  .qual-body{padding:28px 20px}
+  .qual-q{font-size:17px}
+  .qual-opts{grid-template-columns:1fr}
+  .sec-hdr{padding:15px 16px}
+  .sec-title{font-size:14px}
+  .sec-body{padding:0 16px 18px}
+  .item-text{font-size:14px}
+  .btn-row{gap:5px}
+  .ans-btn{font-size:11px;padding:9px 2px}
+  .legend{gap:10px;font-size:11px}
+  .prog-top{font-size:11px}
+  .results-card{padding:20px 16px}
+  .score-big{font-size:34px}
+  .risk-badge-lg{font-size:14px;padding:7px 14px}
+  .cta-box{padding:16px}
+  .pri-list{padding:14px 16px}
+  .view-results-row{flex-direction:column;gap:8px}
+  .btn-ghost{flex:none;width:100%}
+  .score-row{flex-direction:column;align-items:flex-start;gap:12px}
+  .qual-opt{padding:16px 12px}
+  .breakdown{gap:10px;font-size:11px}
+  .contact-footer{font-size:10px}
+}
+
+@media (max-width: 380px) {
+  .ans-btn{font-size:10px;padding:8px 1px;letter-spacing:-.2px}
+  .sec-title{font-size:13px}
+  .item-text{font-size:13px}
+  .hdr-name{font-size:13px}
+  .intro-title{font-size:18px}
+}
+
+/* CAPTURE FORM */
+.capture-box{background:#0f1117;border:1px solid #c8a45a44;border-radius:10px;padding:20px;margin-bottom:16px}
+.capture-label{font-size:14px;font-weight:700;color:#e8e8f0;margin-bottom:14px;line-height:1.4}
+.capture-fields{display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
+.cap-input{background:#1a1d27;border:1px solid #2a2d3a;border-radius:7px;padding:12px 14px;font-size:14px;color:#e8e8f0;font-family:Georgia,serif;width:100%;outline:none;transition:border-color .15s}
+.cap-input:focus{border-color:#c8a45a}
+.cap-input::placeholder{color:#555568}
+.capture-privacy{font-size:11px;color:#8888a0;font-style:italic;line-height:1.5}
+.capture-status{margin-top:10px;padding:9px 12px;border-radius:6px;font-size:13px;text-align:center}
+.capture-status.success{background:#0f2d1e;border:1px solid #4caf7d44;color:#4caf7d}
+.capture-status.error{background:#2d1515;border:1px solid #e05c5c44;color:#e05c5c}
+.capture-status.sending{background:#1a1d27;border:1px solid #2a2d3a;color:#8888a0}
+@media(max-width:600px){
+  .capture-box{padding:16px}
+  .capture-label{font-size:13px}
+  .cap-input{font-size:13px;padding:11px 12px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div>
+    <div class="hdr-name">Small Business Legal Aid&#x2122;</div>
+    <div class="hdr-sub">Law Office of Ambrose Moses III, Co LPA</div>
+  </div>
+  <div class="hdr-meta">
+    <div id="hdr-date"></div>
+    <div id="hdr-risk" class="hdr-risk" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ═══════════ INTRO ═══════════ -->
+<div id="screen-intro" class="wrap">
+  <div class="card">
+    <div class="intro-body">
+      <div class="intro-icon">&#x2696;&#xFE0F;</div>
+      <div class="intro-title">Legal Readiness Assessment</div>
+      <div class="intro-sub">Prepared for Pyramid CDC&#39;s Entrepreneurship &amp; Small Business Training Programs</div>
+      <div class="intro-inst">For each question, choose <strong style="color:#4caf7d">Yes</strong>, <strong style="color:#e05c5c">No</strong>, or <strong style="color:#6aabcc">Not Sure</strong>.</div>
+      <button class="btn-gold" onclick="goTo('qualifier')" style="max-width:260px">Begin Assessment &#x2192;</button>
+      <div class="intro-note">Takes about 3&#x2013;5 minutes &middot; Personalized to your situation</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ QUALIFIER ═══════════ -->
+<div id="screen-qualifier" class="wrap hidden">
+  <div class="card">
+    <div class="qual-body">
+      <div class="qual-step" id="qual-step-label">QUICK SETUP &middot; 1 OF 2</div>
+      <div class="qual-q" id="qual-question"></div>
+      <div class="qual-opts" id="qual-options"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ ASSESSMENT ═══════════ -->
+<div id="screen-assessment" class="wrap hidden">
+  <!-- legend -->
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" style="background:#4caf7d"></div>Yes &#x2014; Covered</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#e05c5c"></div>No &#x2014; Confirmed gap</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#6aabcc"></div>Not Sure &#x2014; Knowledge gap</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#2a2d3a"></div>Unanswered (not counted)</div>
+  </div>
+  <!-- progress -->
+  <div class="prog-wrap">
+    <div class="prog-top">
+      <span id="prog-label">0 of 32 answered</span>
+      <span id="prog-score" style="color:#8888a0">Answer questions to see your score</span>
+    </div>
+    <div class="prog-bar">
+      <div class="pb-g" id="pb-yes" style="width:0%"></div>
+      <div class="pb-b" id="pb-unsure" style="width:0%"></div>
+      <div class="pb-r" id="pb-no" style="width:0%"></div>
+    </div>
+  </div>
+  <!-- sections injected by JS -->
+  <div id="sections-container"></div>
+  <div class="view-results-row">
+    <button class="btn-ghost" onclick="resetAll()">&#x2190; Start Over</button>
+    <button class="btn-gold" onclick="goTo('results')" style="flex:2">View My Results &#x2192;</button>
+  </div>
+</div>
+
+<!-- ═══════════ RESULTS ═══════════ -->
+<div id="screen-results" class="wrap hidden">
+  <div class="results-card">
+    <!-- disclaimer -->
+    <div class="disclaimer">
+      <p>The results of this assessment are for informational purposes only and constitute issue spotting &#x2014; not legal advice. This assessment does not create an attorney-client relationship. For legal advice specific to your business, consult a licensed attorney.</p>
+    </div>
+    <!-- score -->
+    <div class="score-row">
+      <div>
+        <div class="score-big" id="res-score">0/0</div>
+        <div class="score-sub" id="res-unanswered"></div>
+      </div>
+      <div class="risk-badge-lg" id="res-badge"></div>
+    </div>
+    <!-- bar -->
+    <div class="prog-bar" style="margin-bottom:8px">
+      <div class="pb-g" id="res-pb-yes" style="width:0%"></div>
+      <div class="pb-b" id="res-pb-unsure" style="width:0%"></div>
+      <div class="pb-r" id="res-pb-no" style="width:0%"></div>
+    </div>
+    <div class="breakdown">
+      <span class="bd-g" id="res-bd-yes"></span>
+      <span class="bd-b" id="res-bd-unsure"></span>
+      <span class="bd-r" id="res-bd-no"></span>
+      <span class="bd-m" id="res-bd-blank"></span>
+    </div>
+    <!-- capture form -->
+    <div class="capture-box" id="capture-box">
+      <div class="capture-label">Receive a copy of your results &amp; get matched with next steps</div>
+      <div class="capture-fields">
+        <input type="text"  id="cap-name"  class="cap-input" placeholder="Your full name" autocomplete="name" />
+        <input type="email" id="cap-email" class="cap-input" placeholder="Your email address" autocomplete="email" />
+      </div>
+      <div class="capture-privacy">Your information is confidential and used only to follow up on your assessment results.</div>
+      <div id="capture-status" class="capture-status hidden"></div>
+    </div>
+
+    <!-- cta -->
+    <div class="cta-box">
+      <div class="cta-text" id="res-cta-text"></div>
+      <button class="btn-gold" id="res-cta-btn" onclick="submitAndSchedule()"></button>
+      <div class="cta-sub">Confidential &middot; No obligation &middot; Attorney Ambrose Moses III</div>
+    </div>
+  </div>
+
+  <!-- priority lists -->
+  <div id="res-gaps"></div>
+  <div id="res-knowledge"></div>
+  <div id="res-unanswered-rf"></div>
+
+  <!-- nav -->
+  <div class="view-results-row">
+    <button class="btn-ghost" onclick="goTo('assessment')">&#x2190; Review Answers</button>
+    <button class="btn-ghost" onclick="resetAll()">Start Over</button>
+  </div>
+
+  <div class="contact-footer">
+    <strong>Contact:</strong> Attorney Ambrose Moses III &middot; Small Business Legal Aid&#x2122; &middot; Law Office of Ambrose Moses III, Co LPA &middot; 1900 Polaris Parkway, Suite 450-017, Columbus, OH 43240 &middot; (614) 418-7898 &middot; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="80e9eee6efc0d3ede1ececc2f5f3e9eee5f3f3cce5e7e1ecc1e9e4aee3efed">[email&#160;protected]</a>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ─── DATA ────────────────────────────────────────────────────────────────────
+var QUALIFIER_QUESTIONS = [
+  {
+    id:"stage",
+    question:"Where are you in your business journey?",
+    options:[
+      {value:"idea",   label:"Idea Stage",        icon:"💡", desc:"Haven&#39;t launched yet"},
+      {value:"operating",label:"Already Operating",icon:"🚀", desc:"In business, formal or informal"}
+    ]
+  },
+  {
+    id:"coowners",
+    question:"Do you have co-owners or business partners?",
+    options:[
+      {value:"solo",    label:"Solo",    icon:"👤", desc:"Just me"},
+      {value:"partners",label:"Partners",icon:"👥", desc:"Two or more owners"}
+    ]
+  }
+];
+
+var SECTIONS = [
+  {
+    id:"formation", title:"Business Formation & Structure", icon:"<span class=\"sec-icon si-1\">1</span>",
+    riskNote:"If formation documents are incomplete, your liability shield may be at risk.",
+    items:[
+      {id:"f1",text:"Have you officially registered your business with the State?",redFlag:true},
+      {id:"f2",text:"Have you selected the correct legal structure (LLC, Corporation, Nonprofit, etc.)?",redFlag:true},
+      {id:"f3",text:"Do you understand how your business structure protects (or does not protect) your personal assets?",redFlag:true},
+      {id:"f4",text:"Do you have a written Operating Agreement or Bylaws?",redFlag:true},
+      {id:"f5",text:"Are ownership percentages clearly documented?",redFlag:false},
+      {id:"f6",text:"Have capital contributions been recorded?",redFlag:false},
+      {id:"f7",text:"Is your entity in good standing with the State?",redFlag:false}
+    ]
+  },
+  {
+    id:"ownership", title:"Ownership & Decision-Making", icon:"<span class=\"sec-icon si-2\">2</span>",
+    riskNote:"Most business disputes — and personal liability exposure — arise from undocumented ownership and governance decisions.",
+    items:[
+      {id:"o1",text:"Do you have a written Operating Agreement that documents ownership and decision-making authority?",redFlag:true},
+      {id:"o2",text:"Is there a succession plan or buy-sell provision addressing what happens if you exit, become incapacitated, or a co-owner leaves?",redFlag:true},
+      {id:"o3",text:"Are ownership percentages and capital contributions clearly documented?",redFlag:false},
+      {id:"o4",text:"Have dispute resolution procedures been addressed?",redFlag:false},
+      {id:"o5",text:"Are major governance decisions documented in writing?",redFlag:false}
+    ]
+  },
+  {
+    id:"contracts", title:"Contracts & Revenue Protection", icon:"<span class=\"sec-icon si-3\">3</span>",
+    riskNote:"Template contracts downloaded online often create hidden liability.",
+    items:[
+      {id:"c1",text:"Do you use written contracts with customers or clients?",redFlag:true},
+      {id:"c2",text:"Are payment terms clearly defined in writing?",redFlag:true},
+      {id:"c3",text:"Are independent contractors properly classified?",redFlag:true},
+      {id:"c4",text:"Are contracts customized to your business model?",redFlag:false},
+      {id:"c5",text:"Do contracts limit liability appropriately?",redFlag:false}
+    ]
+  },
+  {
+    id:"compliance", title:"Compliance & Regulatory Requirements", icon:"<span class=\"sec-icon si-4\">4</span>",
+    riskNote:"Compliance issues often surface during audits, disputes, or funding events.",
+    items:[
+      {id:"r1",text:"Do you have all required licenses and permits?",redFlag:true},
+      {id:"r2",text:"Are you compliant with state and local regulations?",redFlag:true},
+      {id:"r3",text:"Are you compliant with wage and hour laws (if you have workers)?",redFlag:true},
+      {id:"r4",text:"Have workers&#39; compensation requirements been satisfied (if required)?",redFlag:true},
+      {id:"r5",text:"Have you evaluated Corporate Transparency Act reporting requirements?",redFlag:false}
+    ]
+  },
+  {
+    id:"ip", title:"Intellectual Property & Brand Protection", icon:"<span class=\"sec-icon si-5\">5</span>",
+    riskNote:"If you do not legally own your brand, you are building on borrowed ground.",
+    items:[
+      {id:"i1",text:"Is your business name legally available?",redFlag:true},
+      {id:"i2",text:"Do you legally own your logo and marketing materials?",redFlag:true},
+      {id:"i3",text:"Do you own your website domain?",redFlag:true},
+      {id:"i4",text:"Have you conducted a trademark search?",redFlag:false},
+      {id:"i5",text:"Are IP assignments documented with contractors?",redFlag:false}
+    ]
+  },
+  {
+    id:"financial", title:"Financial & Liability Protection", icon:"<span class=\"sec-icon si-6\">6</span>",
+    riskNote:"Financial commingling is one of the fastest ways to lose liability protection.",
+    items:[
+      {id:"fi1",text:"Are personal and business finances completely separated?",redFlag:true},
+      {id:"fi2",text:"Do you have proper accounting in place?",redFlag:true},
+      {id:"fi3",text:"Do you have adequate general liability insurance?",redFlag:true},
+      {id:"fi4",text:"Do you understand personal guarantee exposure?",redFlag:false},
+      {id:"fi5",text:"Have you evaluated asset-protection strategies?",redFlag:false}
+    ]
+  }
+];
+
+var SCHEDULE_URL = "https://moseslaw.mycase.com/contact_us/sjibGsz82k7mWTpmDWNR8uKK";
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+var state = {
+  phase: "intro",
+  qualStep: 0,
+  qualifiers: {},
+  answers: {},
+  openSection: 0
+};
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+document.addEventListener("DOMContentLoaded", function() {
+  var now = new Date();
+  document.getElementById("hdr-date").textContent = now.toLocaleDateString("en-US",{month:"numeric",day:"numeric",year:"numeric"});
+  buildSections();
+  renderQualifier();
+  goTo("intro");
+});
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+function goTo(phase) {
+  ["intro","qualifier","assessment","results"].forEach(function(s) {
+    document.getElementById("screen-"+s).classList.toggle("hidden", s !== phase);
+  });
+  state.phase = phase;
+  if (phase === "assessment") {
+    updateProgress();
+    refreshSectionBadges();
+    var hdrRisk = document.getElementById("hdr-risk");
+    hdrRisk.style.display = "block";
+  }
+  if (phase === "results") {
+    renderResults();
+    document.getElementById("hdr-risk").style.display = "none";
+  }
+  if (phase === "intro" || phase === "qualifier") {
+    document.getElementById("hdr-risk").style.display = "none";
+  }
+  window.scrollTo(0,0);
+}
+
+function resetAll() {
+  state = {phase:"intro", qualStep:0, qualifiers:{}, answers:{}, openSection:0};
+  buildSections();
+  renderQualifier();
+  goTo("intro");
+}
+
+// ─── GOOGLE SHEETS ENDPOINT ──────────────────────────────────────────────────
+var SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzItORBPF4r5CRXzfxsUmH6_4leyrPTayBtUI2SzWxQfgIY1sk1Z1O2IerRZGpD7oP6/exec';
+
+function openSchedule() {
+  window.open(SCHEDULE_URL, "_blank");
+}
+
+function submitAndSchedule() {
+  var nameVal  = document.getElementById("cap-name")  ? document.getElementById("cap-name").value  : "";
+  var emailVal = document.getElementById("cap-email") ? document.getElementById("cap-email").value : "";
+  var statusEl = document.getElementById("capture-status");
+
+  // Open scheduling link immediately
+  window.open(SCHEDULE_URL, "_blank");
+
+  // Skip POST if no contact info
+  if (!nameVal.trim() && !emailVal.trim()) { return; }
+
+  // Build counts and risk
+  var c    = counts();
+  var risk = getRisk(c.yes, c.no, c.unsure);
+  var allItems = SECTIONS.flatMap(function(s) { return s.items; });
+
+  // Build payload object
+  // Read source context from URL parameter (?source=pyramid, ?source=sbla, etc.)
+  var urlSource = (new URLSearchParams(window.location.search).get("source") || "sbla").toLowerCase();
+
+  var payload = {
+    submitted:    new Date().toISOString(),
+    source:       urlSource,
+    name:         nameVal.trim(),
+    email:        emailVal.trim(),
+    riskLevel:    risk.label,
+    score:        c.yes + "/" + c.answered,
+    yesCount:     c.yes,
+    noCount:      c.no,
+    unsureCount:  c.unsure,
+    unanswered:   c.total - c.answered,
+    stage:        state.qualifiers.stage    || "",
+    coowners:     state.qualifiers.coowners || "",
+    answers:      {}
+  };
+
+  // Record each item answer
+  allItems.forEach(function(item) {
+    payload.answers[item.id] = state.answers[item.id] || "unanswered";
+  });
+
+  // Build plain-text summary for email readability
+  var summary = "LEGAL READINESS ASSESSMENT RESULTS\n";
+  summary += "===================================\n";
+  summary += "Name:       " + (nameVal.trim()  || "Not provided") + "\n";
+  summary += "Email:      " + (emailVal.trim() || "Not provided") + "\n";
+  summary += "Date:       " + new Date().toLocaleDateString("en-US") + "\n";
+  summary += "Risk Level: " + risk.label + "\n";
+  summary += "Score:      " + c.yes + " Yes / " + c.no + " No / " + c.unsure + " Not Sure / " + (c.total - c.answered) + " Unanswered\n";
+  summary += "Stage:      " + (state.qualifiers.stage    || "not specified") + "\n";
+  summary += "Co-owners:  " + (state.qualifiers.coowners || "not specified") + "\n\n";
+
+  var gaps = allItems.filter(function(i) { return i.redFlag && state.answers[i.id] === "no"; });
+  if (gaps.length) {
+    summary += "CONFIRMED GAPS (Red Flag - No):\n";
+    gaps.forEach(function(i) { summary += "  - " + i.text + "\n"; });
+    summary += "\n";
+  }
+
+  var knowledge = allItems.filter(function(i) { return i.redFlag && state.answers[i.id] === "unsure"; });
+  if (knowledge.length) {
+    summary += "KNOWLEDGE GAPS (Red Flag - Not Sure):\n";
+    knowledge.forEach(function(i) { summary += "  - " + i.text + "\n"; });
+    summary += "\n";
+  }
+
+  summary += "FULL ANSWER LOG:\n";
+  SECTIONS.forEach(function(sec) {
+    summary += "\n" + sec.title + ":\n";
+    sec.items.forEach(function(item) {
+      var ans  = state.answers[item.id] || "unanswered";
+      var flag = item.redFlag ? " [RF]" : "";
+      summary += "  " + ans.toUpperCase() + flag + " - " + item.text + "\n";
+    });
+  });
+
+  payload.summary = summary;
+
+  // Show sending status
+  statusEl.className = "capture-status sending";
+  statusEl.textContent = "Sending your results...";
+  statusEl.classList.remove("hidden");
+
+  // POST with text/plain to bypass CORS preflight on Google Apps Script
+  fetch(SHEETS_ENDPOINT, {
+    method:  "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body:    JSON.stringify(payload)
+  })
+  .then(function() {
+    statusEl.className = "capture-status success";
+    statusEl.textContent = "Results submitted. Attorney Moses will be in touch within 1 business day.";
+  })
+  .catch(function() {
+    statusEl.className = "capture-status error";
+    statusEl.textContent = "Submission failed. Please email info@SmallBusinessLegalAid.com directly.";
+  });
+}
+
+// ─── QUALIFIER ───────────────────────────────────────────────────────────────
+function renderQualifier() {
+  var q = QUALIFIER_QUESTIONS[state.qualStep];
+  document.getElementById("qual-step-label").textContent = "QUICK SETUP · " + (state.qualStep+1) + " OF " + QUALIFIER_QUESTIONS.length;
+  document.getElementById("qual-question").textContent = q.question;
+  var opts = document.getElementById("qual-options");
+  opts.innerHTML = "";
+  q.options.forEach(function(opt) {
+    var d = document.createElement("div");
+    d.className = "qual-opt";
+    d.innerHTML = '<div class="qual-opt-icon">'+opt.icon+'</div><div class="qual-opt-label">'+opt.label+'</div><div class="qual-opt-desc">'+opt.desc+'</div>';
+    d.onclick = function() { pickQualifier(q.id, opt.value); };
+    opts.appendChild(d);
+  });
+}
+
+function pickQualifier(key, value) {
+  state.qualifiers[key] = value;
+  if (state.qualStep < QUALIFIER_QUESTIONS.length - 1) {
+    state.qualStep++;
+    renderQualifier();
+  } else {
+    goTo("assessment");
+  }
+}
+
+// ─── SECTION BUILDER ─────────────────────────────────────────────────────────
+function buildSections() {
+  var container = document.getElementById("sections-container");
+  container.innerHTML = "";
+  SECTIONS.forEach(function(sec, sIdx) {
+    var card = document.createElement("div");
+    card.className = "sec-card";
+    card.id = "sec-"+sec.id;
+
+    // header
+    var hdr = document.createElement("div");
+    hdr.className = "sec-hdr";
+    hdr.id = "sec-hdr-"+sec.id;
+    hdr.innerHTML = '<div class="sec-title"><span>'+sec.icon+'</span><span>'+sec.title+'</span></div>'
+      +'<div class="sec-right"><span class="sec-badge badge-grey" id="badge-'+sec.id+'">0/'+sec.items.length+'</span><span class="sec-toggle" id="toggle-'+sec.id+'">+</span></div>';
+    hdr.onclick = (function(sid, si) {
+      return function() { toggleSection(sid, si); };
+    })(sec.id, sIdx);
+    card.appendChild(hdr);
+
+    // body
+    var body = document.createElement("div");
+    body.className = "sec-body";
+    body.id = "sec-body-"+sec.id;
+    body.style.display = sIdx === 0 ? "block" : "none";
+
+    var note = document.createElement("div");
+    note.className = "risk-note";
+    note.textContent = "ℹ️  " + sec.riskNote;
+    body.appendChild(note);
+
+    // sort: red flags first
+    var sorted = sec.items.filter(function(i){return i.redFlag;}).concat(sec.items.filter(function(i){return !i.redFlag;}));
+    sorted.forEach(function(item, iIdx) {
+      var row = document.createElement("div");
+      row.className = "item-row";
+      row.id = "row-"+item.id;
+
+      var top = document.createElement("div");
+      top.className = "item-top";
+      if (item.redFlag) {
+        var badge = document.createElement("span");
+        badge.className = "rf-badge";
+        badge.id = "rfbadge-"+item.id;
+        badge.textContent = "RED FLAG";
+        top.appendChild(badge);
+      }
+      var txt = document.createElement("div");
+      txt.className = "item-text";
+      txt.id = "txt-"+item.id;
+      txt.textContent = item.text;
+      top.appendChild(txt);
+      row.appendChild(top);
+
+      var btnRow = document.createElement("div");
+      btnRow.className = "btn-row";
+      [
+        {val:"yes",   label:"✓ Yes"},
+        {val:"no",    label:"✗ No"},
+        {val:"unsure",label:"? Not Sure"}
+      ].forEach(function(b) {
+        var btn = document.createElement("button");
+        btn.className = "ans-btn";
+        btn.id = "btn-"+item.id+"-"+b.val;
+        btn.textContent = b.label;
+        btn.onclick = (function(iid, bval, secid) {
+          return function(e) { e.stopPropagation(); setAnswer(iid, bval, secid); };
+        })(item.id, b.val, sec.id);
+        btnRow.appendChild(btn);
+      });
+      row.appendChild(btnRow);
+      body.appendChild(row);
+    });
+
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+
+  // set first section toggle
+  var tog = document.getElementById("toggle-"+SECTIONS[0].id);
+  if (tog) tog.textContent = "−";
+}
+
+function toggleSection(secId, sIdx) {
+  SECTIONS.forEach(function(s) {
+    var body = document.getElementById("sec-body-"+s.id);
+    var tog  = document.getElementById("toggle-"+s.id);
+    if (s.id === secId) {
+      var isOpen = body.style.display !== "none";
+      body.style.display = isOpen ? "none" : "block";
+      tog.textContent = isOpen ? "+" : "−";
+    } else {
+      body.style.display = "none";
+      tog.textContent = "+";
+    }
+  });
+}
+
+// ─── ANSWER LOGIC ────────────────────────────────────────────────────────────
+function setAnswer(itemId, val, secId) {
+  if (state.answers[itemId] === val) {
+    delete state.answers[itemId];
+  } else {
+    state.answers[itemId] = val;
+  }
+  refreshItem(itemId);
+  refreshSectionBadge(secId);
+  updateProgress();
+}
+
+function refreshItem(itemId) {
+  var ans = state.answers[itemId];
+  var txt = document.getElementById("txt-"+itemId);
+  if (txt) {
+    txt.className = "item-text" + (ans ? " ans-"+ans : "");
+  }
+  ["yes","no","unsure"].forEach(function(v) {
+    var btn = document.getElementById("btn-"+itemId+"-"+v);
+    if (btn) {
+      btn.className = "ans-btn" + (ans === v ? " sel-"+v : "");
+    }
+  });
+  // hide rf badge when yes
+  var rfb = document.getElementById("rfbadge-"+itemId);
+  if (rfb) rfb.style.display = (ans === "yes") ? "none" : "inline-block";
+}
+
+function refreshSectionBadge(secId) {
+  var sec = SECTIONS.find(function(s){return s.id===secId;});
+  if (!sec) return;
+  var answered = sec.items.filter(function(i){return state.answers[i.id]!==undefined;}).length;
+  var allAnswered = answered === sec.items.length;
+  var hasNoRF   = sec.items.some(function(i){return i.redFlag && state.answers[i.id]==="no";});
+  var hasNsRF   = sec.items.some(function(i){return i.redFlag && state.answers[i.id]==="unsure";});
+  var hasBlkRF  = sec.items.some(function(i){return i.redFlag && state.answers[i.id]===undefined;});
+  var badge = document.getElementById("badge-"+secId);
+  if (!badge) return;
+  badge.textContent = answered+"/"+sec.items.length;
+  badge.className = "sec-badge " + (
+    allAnswered && !hasNoRF && !hasNsRF ? "badge-green" :
+    hasNoRF  ? "badge-red"   :
+    hasNsRF  ? "badge-blue"  :
+    hasBlkRF ? "badge-amber" : "badge-grey"
+  );
+}
+
+function refreshSectionBadges() {
+  SECTIONS.forEach(function(s){ refreshSectionBadge(s.id); });
+}
+
+// ─── PROGRESS ────────────────────────────────────────────────────────────────
+function counts() {
+  var allItems = SECTIONS.flatMap(function(s){return s.items;});
+  var yes=0, no=0, unsure=0, total=allItems.length;
+  allItems.forEach(function(i){
+    if (state.answers[i.id]==="yes")    yes++;
+    else if (state.answers[i.id]==="no") no++;
+    else if (state.answers[i.id]==="unsure") unsure++;
+  });
+  return {yes:yes, no:no, unsure:unsure, total:total, answered:yes+no+unsure};
+}
+
+function getRisk(yes, no, unsure) {
+  var a = yes+no+unsure;
+  if (a===0) return {label:"Not Yet Scored", color:"#8888a0", bg:"#1a1d27", emoji:"—"};
+  var pct = yes/a;
+  if (pct>=0.85 && unsure===0) return {label:"Low Risk",          color:"#4caf7d", bg:"#0f2d1e", emoji:"✅"};
+  if (pct>=0.85 && unsure>0)   return {label:"Low–Moderate Risk", color:"#7ecba3", bg:"#0f2520", emoji:"✅"};
+  if (pct>=0.5)                 return {label:"Moderate Risk",     color:"#e0a030", bg:"#2d1e00", emoji:"⚠️"};
+  return                               {label:"High Legal Risk",   color:"#e05c5c", bg:"#2d1515", emoji:"🚨"};
+}
+
+function getCTA(yes, no, unsure) {
+  var a=yes+no+unsure, pct=a===0?0:yes/a;
+  if (a===0)    return {text:"Complete the assessment to receive your personalized recommendation.", action:"Schedule a Consultation"};
+  if (pct<0.5)  return {text:"Based on your results, you qualify for a free 30-minute Legal Needs Assessment with SBLA.", action:"Schedule Your Free Consultation"};
+  if (pct<0.85) return {text:"You have moderate legal exposure. A targeted legal review can close the gaps before they become costly.", action:"Schedule a Legal Review"};
+  if (unsure>0) return {text:"Your confirmed items look strong, but knowledge gaps could become legal exposure. Let&#39;s close them.", action:"Schedule a Focused Review"};
+  return              {text:"Great foundation! Periodic legal check-ins help you stay protected as your business grows.", action:"Schedule a Maintenance Review"};
+}
+
+function updateProgress() {
+  var c = counts();
+  var risk = getRisk(c.yes, c.no, c.unsure);
+
+  document.getElementById("prog-label").textContent = c.answered+" of "+c.total+" answered";
+  var scoreEl = document.getElementById("prog-score");
+  if (c.answered > 0) {
+    scoreEl.textContent = c.yes+" Yes · "+c.unsure+" Not Sure · "+c.no+" No";
+    scoreEl.style.color = risk.color;
+  } else {
+    scoreEl.textContent = "Answer questions to see your score";
+    scoreEl.style.color = "#8888a0";
+  }
+
+  var pctY = c.total>0 ? (c.yes/c.total)*100 : 0;
+  var pctU = c.total>0 ? (c.unsure/c.total)*100 : 0;
+  var pctN = c.total>0 ? (c.no/c.total)*100 : 0;
+  document.getElementById("pb-yes").style.width    = pctY+"%";
+  document.getElementById("pb-unsure").style.width = pctU+"%";
+  document.getElementById("pb-no").style.width     = pctN+"%";
+
+  var hdrRisk = document.getElementById("hdr-risk");
+  if (c.answered > 0) {
+    hdrRisk.textContent = risk.emoji+" "+risk.label;
+    hdrRisk.style.color = risk.color;
+  }
+}
+
+// ─── RESULTS ─────────────────────────────────────────────────────────────────
+function renderResults() {
+  var c = counts();
+  var risk = getRisk(c.yes, c.no, c.unsure);
+  var cta  = getCTA(c.yes, c.no, c.unsure);
+
+  document.getElementById("res-score").textContent = c.yes+"/"+c.answered;
+  document.getElementById("res-unanswered").textContent = (c.total-c.answered)+" items not answered (not counted)";
+
+  var badge = document.getElementById("res-badge");
+  badge.textContent = risk.emoji+" "+risk.label;
+  badge.style.background = risk.bg;
+  badge.style.color = risk.color;
+
+  var a = c.answered;
+  document.getElementById("res-pb-yes").style.width    = a>0 ? (c.yes/a*100)+"%" : "0%";
+  document.getElementById("res-pb-unsure").style.width = a>0 ? (c.unsure/a*100)+"%" : "0%";
+  document.getElementById("res-pb-no").style.width     = a>0 ? (c.no/a*100)+"%" : "0%";
+
+  document.getElementById("res-bd-yes").textContent    = "✅ "+c.yes+" Yes";
+  document.getElementById("res-bd-unsure").textContent = "❓ "+c.unsure+" Not Sure";
+  document.getElementById("res-bd-no").textContent     = "❌ "+c.no+" No";
+  document.getElementById("res-bd-blank").textContent  = "— "+(c.total-c.answered)+" Not answered";
+
+  document.getElementById("res-cta-text").textContent = cta.text;
+  document.getElementById("res-cta-btn").textContent  = cta.action+" →";
+
+  // priority lists
+  var allItems = SECTIONS.flatMap(function(s){return s.items;});
+  var rfNos    = allItems.filter(function(i){return i.redFlag && state.answers[i.id]==="no";});
+  var rfUnsure = allItems.filter(function(i){return i.redFlag && state.answers[i.id]==="unsure";});
+  var rfBlank  = allItems.filter(function(i){return i.redFlag && state.answers[i.id]===undefined;});
+
+  renderPriList("res-gaps", rfNos, "pl-red", "pl-title-r",
+    "🚨 " + rfNos.length + " Confirmed Gap" + (rfNos.length !== 1 ? "s" : "") + " — Priority Red Flag Items Answered No",
+    null);
+  renderPriList("res-knowledge", rfUnsure, "pl-blue", "pl-title-b",
+    "❓ " + rfUnsure.length + " Knowledge Gap" + (rfUnsure.length !== 1 ? "s" : "") + " — Priority Items Answered Not Sure",
+    "Not knowing is different from non-compliance — but uncertainty about these items warrants a conversation with an attorney.");
+  renderPriList("res-unanswered-rf", rfBlank, "pl-amber", "pl-title-a",
+    "⚠️ " + rfBlank.length + " Priority Item" + (rfBlank.length !== 1 ? "s" : "") + " — Not Yet Answered",
+    null);
+}
+
+function renderPriList(elId, items, cardClass, titleClass, title, subnote) {
+  var el = document.getElementById(elId);
+  if (items.length === 0) { el.innerHTML = ""; return; }
+  var html = "<div class=\"pri-list " + cardClass + "\">";
+  html += "<div class=\"pl-title " + titleClass + "\">" + title + "</div>";
+  if (subnote) { html += "<div class=\"pl-subnote\">" + subnote + "</div>"; }
+  items.forEach(function(item) {
+    html += "<div class=\"pl-item\">&middot; " + item.text + "</div>";
+  });
+  html += "</div>";
+  el.innerHTML = html;
+}
+
+// Array.prototype.flatMap polyfill for older browsers
+if (!Array.prototype.flatMap) {
+  Array.prototype.flatMap = function(fn) {
+    return Array.prototype.concat.apply([], this.map(fn));
+  };
+}
+</script>
+</body>
+</html>
