@@ -429,7 +429,7 @@ var SOURCE_PARAM = (function() {
     return s.toLowerCase();
   } catch(e) { return ""; }
 })();
-var SCHEDULE_URL = URLS[SOURCE_PARAM] || URLS.sbla;
+var SCHEDULE_URL = URLS[SOURCE_PARAM] || URLS.pyramid;
 
 // ─── STATE ───────────────────────────────────────────────────────────────────
 var state = {
@@ -478,7 +478,7 @@ function resetAll() {
   goTo("intro");
 }
 
-var ENDPOINT = "https://script.google.com/macros/s/AKfycbwQsKjC1cUjzqXXlMGPSVq3JCvQkm5l5jS2yLIQXOJzm6TM1fOXTJqFVSvJTMf0RDIA/exec";
+var ENDPOINT = "https://script.google.com/macros/s/AKfycbzItORBPF4r5CRXzfxsUmH6_4leyrPTayBtUI2SzWxQfgIY1sk1Z1O2IerRZGpD7oP6/exec";
 
 function openSchedule() {
   var nameVal  = document.getElementById("cap-name")  ? document.getElementById("cap-name").value  : "";
